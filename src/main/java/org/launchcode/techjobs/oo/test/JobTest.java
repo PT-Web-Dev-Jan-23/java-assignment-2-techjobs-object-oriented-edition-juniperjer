@@ -27,6 +27,7 @@ public class JobTest {
                 new Location("Desert"),
                 new PositionType("Quality control"),
                 new CoreCompetency("Persistence"));
+
         assertTrue(testJob3 instanceof Job);
         assertTrue(testJob3.getEmployer() instanceof Employer);
         assertTrue(testJob3.getLocation() instanceof Location);
@@ -91,9 +92,9 @@ public class JobTest {
         String labelsAndData= "\n" + "ID: " + testJob.getId() + "\n"+
                 "Name: " + testJob.getName() + "\n" +
                 "Employer: "+ testJob.getEmployer() + "\n"+
-                "Location: "+ testJob.getLocation() + "\n"+
+                "Location: "+ "Data not available" + "\n"+
                 "Position Type: " + testJob.getPositionType() + "\n"+
-                "Core Competency: " + testJob.getCoreCompetency() + "\n";
+                "Core Competency: " + "Data not available" + "\n";
         assertEquals(testJob.toString(), labelsAndData);
     }
 }
