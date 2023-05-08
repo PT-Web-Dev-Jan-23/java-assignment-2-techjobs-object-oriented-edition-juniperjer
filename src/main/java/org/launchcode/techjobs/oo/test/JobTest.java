@@ -6,8 +6,7 @@ import org.junit.runners.JUnit4;
 import org.launchcode.techjobs.oo.*;
 
 import static junit.framework.TestCase.assertTrue;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.*;
 
 /**
  * Created by LaunchCode
@@ -29,18 +28,15 @@ public class JobTest {
                 new PositionType("Quality control"),
                 new CoreCompetency("Persistence"));
         assertTrue(testJob3 instanceof Job);
-        assertEquals("Product tester", testJob3.getName());
-
         assertTrue(testJob3.getEmployer() instanceof Employer);
-        assertEquals("ACME", testJob3.getEmployer().getValue());
-
         assertTrue(testJob3.getLocation() instanceof Location);
-        assertEquals("Desert", testJob3.getLocation().getValue());
-
         assertTrue(testJob3.getPositionType() instanceof PositionType);
-        assertEquals("Quality control", testJob3.getPositionType().getValue());
-
         assertTrue(testJob3.getCoreCompetency() instanceof CoreCompetency);
+
+        assertEquals("Product tester", testJob3.getName());
+        assertEquals("ACME", testJob3.getEmployer().getValue());
+        assertEquals("Desert", testJob3.getLocation().getValue());
+        assertEquals("Quality control", testJob3.getPositionType().getValue());
         assertEquals("Persistence", testJob3.getCoreCompetency().getValue());
     }
     @Test
@@ -55,7 +51,7 @@ public class JobTest {
                 new Location("Desert"),
                 new PositionType("Quality control"),
                 new CoreCompetency("Persistence"));
-        assertNotEquals(testJob3, testJob4);
+        assertFalse(testJob3 == testJob4);
     }
 
     @Test
@@ -98,6 +94,6 @@ public class JobTest {
                 "Location: "+ testJob.getLocation() + "\n"+
                 "Position Type: " + testJob.getPositionType() + "\n"+
                 "Core Competency: " + testJob.getCoreCompetency() + "\n";
-        assertNotEquals(testJob.toString(), labelsAndData);
+        assertEquals(testJob.toString(), labelsAndData);
     }
 }
