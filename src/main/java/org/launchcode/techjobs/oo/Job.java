@@ -48,7 +48,7 @@ public class Job {
         if (this.coreCompetency == null || this.coreCompetency.getValue()==""){
             this.coreCompetency.setValue(dNA);
         }
-        return "\n" + "ID: " + id + "\n"+
+        return "\n"+ "ID: " + id + "\n"+
                 "Name: " + name + "\n" +
                 "Employer: "+ employer + "\n"+
                 "Location: "+ location + "\n"+

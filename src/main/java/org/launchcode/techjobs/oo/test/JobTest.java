@@ -50,11 +50,54 @@ public class JobTest {
                 new Location("Desert"),
                 new PositionType("Quality control"),
                 new CoreCompetency("Persistence"));
-        Job testJob4 = new Job("Humphrey",
-                new Employer("LaunchCode"),
-                new Location("Jungle"),
-                new PositionType("CEO"),
-                new CoreCompetency("Personality Hire"));
+        Job testJob4 = new Job("Product tester",
+                new Employer("ACME"),
+                new Location("Desert"),
+                new PositionType("Quality control"),
+                new CoreCompetency("Persistence"));
         assertNotEquals(testJob3, testJob4);
+    }
+
+    @Test
+    public void testToStringStartsAndEndsWithNewLine(){
+        Job testJob = new Job("Product tester",
+                new Employer("ACME"),
+                new Location("Desert"),
+                new PositionType("Quality control"),
+                new CoreCompetency("Persistence"));
+        char arrayChar[] = testJob.toString().toCharArray();
+        assertEquals('\n', arrayChar[arrayChar.length-1]);
+        assertEquals('\n', arrayChar[0]);
+    }
+    @Test
+    public void testToStringContainsCorrectLabelsAndData(){
+        Job testJob = new Job("Product tester",
+                new Employer("ACME"),
+                new Location("Desert"),
+                new PositionType("Quality control"),
+                new CoreCompetency("Persistence"));
+        String labelsAndData= "\n" + "ID: " + testJob.getId() + "\n"+
+                "Name: " + testJob.getName() + "\n" +
+                "Employer: "+ testJob.getEmployer() + "\n"+
+                "Location: "+ testJob.getLocation() + "\n"+
+                "Position Type: " + testJob.getPositionType() + "\n"+
+                "Core Competency: " + testJob.getCoreCompetency() + "\n";
+        assertEquals(testJob.toString(), labelsAndData);
+    }
+
+    @Test
+    public void testToStringHandlesEmptyField(){
+        Job testJob = new Job("Product tester",
+                new Employer("ACME"),
+                new Location(""),
+                new PositionType("Quality control"),
+                new CoreCompetency(""));
+        String labelsAndData= "\n" + "ID: " + testJob.getId() + "\n"+
+                "Name: " + testJob.getName() + "\n" +
+                "Employer: "+ testJob.getEmployer() + "\n"+
+                "Location: "+ testJob.getLocation() + "\n"+
+                "Position Type: " + testJob.getPositionType() + "\n"+
+                "Core Competency: " + testJob.getCoreCompetency() + "\n";
+        assertNotEquals(testJob.toString(), labelsAndData);
     }
 }
